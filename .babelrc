@@ -1,0 +1,15 @@
+{
+    "presets": ["stage-3"],
+  // 请看一下 devDependencies
+    "plugins": [
+          "transform-async-to-generator",        // 把async函数转化成generator函数
+      "transform-es2015-modules-commonjs",   // 将modules编译成commonjs
+      "transform-export-extensions"          // // 编译额外的exprt语法，如export * as ns from "mod";
+  ]
+}
+
+
+
+
+
+
