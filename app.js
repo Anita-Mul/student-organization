@@ -1,6 +1,7 @@
 import express from "express";
 // import config from "config-lite";
 import router from "./routes/index.js";
+import db from "./mongodb/db.js";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import connectMongo from "connect-mongo";
