@@ -1,5 +1,5 @@
 import express from "express";
-// import config from "config-lite";
+import config from "config-lite";
 import router from "./routes/index.js";
 import db from "./mongodb/db.js";
 import cookieParser from "cookie-parser";
@@ -31,31 +31,27 @@ app.all("*", (req, res, next) => {
   }
 });
 
-// const MongoStore = connectMongo(session);
-// app.use(cookieParser());
-// app.use(
-//   session({
-//     name: config.session.name, // 'SID'
-//     secret: config.session.secret, // 'SID'
-//     resave: true,
-//     saveUninitialized: false,
-//     cookie: config.session.cookie,
-//     store: new MongoStore({
-//       url: config.url, // 'mongodb://localhost:27017/elm'
-//       // connect-mongo会在该database下创建一个sessions的数据表
-//     }),
-//   })
-// );
+const MongoStore = connectMongo(session);
+app.use(cookieParser());
+
+app.use(
+  session({
+    name: config.session.name,
+    secret: config.session.secret,
+    resave: true,
+    saveUninitialized: false,
+    cookie: config.session.cookie,
+    store: new MongoStore({
+      url: config.url,
+    }),
+  })
+);
 
 router(app);
 
 app.use(history());
 app.use(express.static("./public"));
 
-// app.listen(process.env.PORT || config.port, () => {
-//   console.log(chalk.green(`成功监听端口：${config.port}`));
-// });
-
-app.listen(3000, () => {
-  console.log(chalk.green(`成功监听端口: 3000`));
+app.listen(process.env.PORT || config.port, () => {
+  console.log(chalk.green(`成功监听端口：${config.port}`));
 });

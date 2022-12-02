@@ -4,20 +4,18 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const leaderSchema = new Schema({
+const peopleSchema = new Schema({
   user_name: String,
   password: String,
-  id: Number,
   create_time: String,
   sex: { type: String, default: "man" },
   institute: String,
   phone: String,
   club: [Number],
   avatar: { type: String, default: "default.jpg" },
+  type: "String",
 });
 
-leaderSchema.index({ id: 1 });
+const People = mongoose.model("People", peopleSchema);
 
-const Leader = mongoose.model("Leader", leaderSchema);
-
-export default Leader;
+export default People;

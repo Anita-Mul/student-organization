@@ -1,7 +1,7 @@
 "use strict";
 
-import test from "./test";
+import people from "./people.js";
 
 export default (app) => {
-  app.use("/", test);
+  app.use("/", people);
 };
