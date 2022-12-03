@@ -21,7 +21,7 @@ class News {
     }
 
     try {
-      const activities = await NewsModel.find({ _id: news_id }, "-_id");
+      const activities = await NewsModel.find({ _id: news_id }, "-_id -__v");
       res.send({
         status: 1,
         data: activities,
@@ -50,7 +50,7 @@ class News {
     }
 
     try {
-      const activities = await NewsModel.find({ club: club_id }, "-_id");
+      const activities = await NewsModel.find({ club: club_id }, "-_id -__v");
       res.send({
         status: 1,
         data: activities,
@@ -71,7 +71,7 @@ class News {
 
     form.parse(req, async (err, fields, files) => {
       const { club, title, content, author } = fields;
-      console.log(11111);
+
       try {
         if (!club) {
           throw new Error("必填新闻所属社团");
@@ -159,6 +159,7 @@ class News {
 
   async updateNews(req, res, next) {
     const form = new formidable.IncomingForm();
+    form.uploadDir = `./public/img`;
 
     form.parse(req, async (err, fields, files) => {
       const { id, club, title, content, author, picture } = fields;
@@ -185,14 +186,9 @@ class News {
         return;
       }
 
-      const image_path = "default.jpg";
+      const image_path = await getPath(files, res, "news");
 
-      if (picture) {
-        req.imgType = "news";
-        image_path = await getPath(req);
-      }
-
-      const foodObj = {
+      const newsObj = {
         club,
         title,
         content,
@@ -201,7 +197,7 @@ class News {
       };
 
       try {
-        await MenuModel.findOneAndUpdate({ _id: id }, { $set: foodObj });
+        await NewsModel.findOneAndUpdate({ _id: id }, { $set: newsObj });
 
         res.send({
           status: 1,

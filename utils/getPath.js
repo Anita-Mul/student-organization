@@ -6,7 +6,7 @@ import fs from "fs";
 async function getPath(files, res, dir) {
   return new Promise((resolve, reject) => {
     if (!files.file) {
-      resolve("default.jpg");
+      resolve("img/default.jpg");
       console.log("未上传图片，使用默认图片");
       return;
     }
