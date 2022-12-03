@@ -10,7 +10,7 @@ const budgetSchema = new Schema({
   description: String,
   date: { type: Date, default: Date.now },
   money: Number,
-  status: Boolean,
+  state: Boolean,
 });
 
 const Budget = mongoose.model("Budget", budgetSchema);

@@ -11,5 +11,6 @@ router.get("/allActivity", Activity.getAllActivity);
 router.post("/addActivity", Activity.addActivity);
 router.get("/deleteActivity/:activity_id", Activity.deleteActivity);
 router.post("/updateActivity", Activity.updateActivity);
+router.get("/updateActivityState/:activity_id", Activity.updateActivityState);
 
 export default router;

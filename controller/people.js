@@ -6,6 +6,7 @@ import dtime from "time-formater";
 
 import PeopleModel from "../models/people";
 import getPath from "../utils/getPath";
+
 const ADMIN = "Admin";
 const USER = "User";
 const LEADER = "Leader";

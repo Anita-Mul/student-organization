@@ -86,7 +86,7 @@ class Budget {
     const form = new formidable.IncomingForm();
 
     form.parse(req, async (err, fields, files) => {
-      const { club, input, description, money, status } = fields;
+      const { club, input, description, money, state } = fields;
 
       try {
         if (!club) {
@@ -97,7 +97,7 @@ class Budget {
           throw new Error("必填经费描述");
         } else if (!money) {
           throw new Error("必填经费金额");
-        } else if (!status) {
+        } else if (!state) {
           throw new Error("必填经费状态（已批准[true] or 不批准[false]）");
         }
       } catch (err) {
@@ -115,7 +115,7 @@ class Budget {
         input,
         description,
         money,
-        status,
+        state,
       };
 
       const budget = new BudgetModel(budgetObj);
@@ -176,7 +176,7 @@ class Budget {
     const form = new formidable.IncomingForm();
 
     form.parse(req, async (err, fields, files) => {
-      const { id, club, input, description, money, status } = fields;
+      const { id, club, input, description, money, state } = fields;
 
       try {
         if (!club) {
@@ -187,7 +187,7 @@ class Budget {
           throw new Error("必填经费描述");
         } else if (!money) {
           throw new Error("必填经费金额");
-        } else if (!status) {
+        } else if (!state) {
           throw new Error("必填经费状态（已批准[true] or 不批准[false]）");
         } else if (!id) {
           throw new Error("必填经费 id");
@@ -207,7 +207,7 @@ class Budget {
         input,
         description,
         money,
-        status,
+        state,
       };
 
       try {
@@ -226,6 +226,49 @@ class Budget {
         });
       }
     });
+  }
+
+  async updateBudgetState(req, res, next) {
+    const budget_id = req.params.budget_id;
+    const state = req.query.state;
+
+    try {
+      if (!budget_id) {
+        throw new Error("必填经费 id");
+      } else if (!state) {
+        throw new Error("必填经费状态");
+      }
+    } catch (err) {
+      console.log(err.message, err);
+      res.send({
+        status: 0,
+        type: "ERROR_PARAMS",
+        message: err.message,
+      });
+      return;
+    }
+
+    try {
+      await BudgetModel.findOneAndUpdate(
+        { _id: budget_id },
+        { $set: { state } }
+      );
+
+      res.send({
+        status: 1,
+        success: "更新经费状态成功",
+      });
+
+      return;
+    } catch (err) {
+      console.log("更新经费状态失败", err);
+      res.send({
+        status: 0,
+        type: "ERROR_UPLOAD_IMG",
+        message: "更新经费状态失败",
+      });
+      return;
+    }
   }
 }
 

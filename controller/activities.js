@@ -247,6 +247,49 @@ class Activity {
       }
     });
   }
+
+  async updateActivityState(req, res, next) {
+    const activity_id = req.params.activity_id;
+    const state = req.query.state;
+
+    try {
+      if (!activity_id) {
+        throw new Error("必填活动 id");
+      } else if (!state) {
+        throw new Error("必填活动状态");
+      }
+    } catch (err) {
+      console.log(err.message, err);
+      res.send({
+        status: 0,
+        type: "ERROR_PARAMS",
+        message: err.message,
+      });
+      return;
+    }
+
+    try {
+      await ActivityModel.findOneAndUpdate(
+        { _id: activity_id },
+        { $set: { state } }
+      );
+
+      res.send({
+        status: 1,
+        success: "更新活动状态成功",
+      });
+
+      return;
+    } catch (err) {
+      console.log("更新活动状态失败", err);
+      res.send({
+        status: 0,
+        type: "ERROR_UPLOAD_IMG",
+        message: "更新活动状态失败",
+      });
+      return;
+    }
+  }
 }
 
 export default new Activity();
