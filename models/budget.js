@@ -5,12 +5,12 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const budgetSchema = new Schema({
-  name: String,
-  password: String,
-  create_time: String,
-  institute: String,
-  phone: String,
-  avatar: { type: String, default: "default.jpg" },
+  club: String,
+  input: Boolean,
+  description: String,
+  date: { type: Date, default: Date.now },
+  money: Number,
+  status: Boolean,
 });
 
 const Budget = mongoose.model("Budget", budgetSchema);

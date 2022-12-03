@@ -10,7 +10,7 @@ const clubSchema = new Schema({
   member: [String],
   information: String,
   type: String,
-  picture: { type: String, default: "default.jpg" },
+  picture: { type: String, default: "img/default.jpg" },
   news: [String],
   activities: [String],
   budget: [String],

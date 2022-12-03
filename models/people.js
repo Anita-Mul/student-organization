@@ -12,7 +12,7 @@ const peopleSchema = new Schema({
   institute: String,
   phone: String,
   club: [Number],
-  avatar: { type: String, default: "default.jpg" },
+  avatar: { type: String, default: "img/default.jpg" },
   type: "String",
 });
 
