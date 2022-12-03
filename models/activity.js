@@ -6,11 +6,12 @@ const Schema = mongoose.Schema;
 
 const activitySchema = new Schema({
   name: String,
-  password: String,
-  create_time: String,
-  institute: String,
-  phone: String,
-  avatar: { type: String, default: "default.jpg" },
+  site: String,
+  time: String,
+  number: Number,
+  leader: String,
+  state: Boolean,
+  club: String,
 });
 
 const Activity = mongoose.model("Activity", activitySchema);
