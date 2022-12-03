@@ -1,12 +1,11 @@
 "use strict";
 
-import PeopleModel from "../models/people";
 import crypto from "crypto";
 import formidable from "formidable";
 import dtime from "time-formater";
-import path from "path";
-import fs from "fs";
 
+import PeopleModel from "../models/people";
+import getPath from "../utils/getPath";
 const ADMIN = "Admin";
 const USER = "User";
 const LEADER = "Leader";
@@ -21,7 +20,6 @@ class People {
     this.updateAvatar = this.updateAvatar.bind(this);
     this.encryption = this.encryption.bind(this);
     this.Md5 = this.Md5.bind(this);
-    this.getPath = this.getPath.bind(this);
   }
 
   async login(req, res, next) {
@@ -255,48 +253,6 @@ class People {
     }
   }
 
-  async getPath(req, res, next) {
-    return new Promise((resolve, reject) => {
-      const form = formidable.IncomingForm();
-      form.uploadDir = "./public/img";
-
-      form.parse(req, async (err, fields, files) => {
-        const hashName = (
-          new Date().getTime() + Math.ceil(Math.random() * 10000)
-        ).toString(16);
-        const extname = path.extname(files.file.name);
-
-        if (![".jpg", ".jpeg", ".png"].includes(extname)) {
-          fs.unlinkSync(files.file.path);
-          res.send({
-            status: 0,
-            type: "ERROR_EXTNAME",
-            message: "文件格式错误",
-          });
-          reject("上传失败");
-          return;
-        }
-
-        const fullName = hashName + extname;
-        const repath = "./public/img/" + fullName;
-
-        try {
-          // 改了名字就相当于移动了文件的位置
-          fs.renameSync(files.file.path, repath);
-          resolve(fullName);
-        } catch (err) {
-          console.log("保存图片失败", err);
-          if (fs.existsSync(repath)) {
-            fs.unlinkSync(repath);
-          } else {
-            fs.unlinkSync(files.file.path);
-          }
-          reject("保存图片失败");
-        }
-      });
-    });
-  }
-
   async updateAvatar(req, res, next) {
     const people_id = req.params.people_id;
 
@@ -311,7 +267,8 @@ class People {
     }
 
     try {
-      const image_path = await this.getPath(req);
+      req.imgType = "people";
+      const image_path = await getPath(req);
 
       await PeopleModel.findOneAndUpdate(
         { _id: people_id },
@@ -320,7 +277,7 @@ class People {
 
       res.send({
         status: 1,
-        image_path,
+        data: image_path,
       });
 
       return;

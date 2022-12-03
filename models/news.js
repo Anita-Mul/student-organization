@@ -8,6 +8,8 @@ const newsSchema = new Schema({
   club: Number,
   title: String,
   content: String,
+  author: String,
+  date: { type: Date, default: Date.now },
   picture: { type: String, default: "default.jpg" },
 });
 

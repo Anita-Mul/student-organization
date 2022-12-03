@@ -6,14 +6,14 @@ const Schema = mongoose.Schema;
 
 const clubSchema = new Schema({
   create_time: String,
-  leader: [Number],
-  member: [Number],
+  leader: [String],
+  member: [String],
   information: String,
   type: String,
   picture: { type: String, default: "default.jpg" },
-  news: [Number],
-  activities: [Number],
-  budget: [Number],
+  news: [String],
+  activities: [String],
+  budget: [String],
 });
 
 const Club = mongoose.model("Club", clubSchema);
