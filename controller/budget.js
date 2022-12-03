@@ -65,6 +65,23 @@ class Budget {
     }
   }
 
+  async getAllBudget(req, res, next) {
+    try {
+      const budgets = await BudgetModel.find({}, "-_id -__v");
+      res.send({
+        status: 1,
+        data: budgets,
+      });
+    } catch (err) {
+      console.log("获取经费数据失败");
+      res.send({
+        status: 0,
+        type: "ERROR_DATA",
+        message: "获取经费数据失败",
+      });
+    }
+  }
+
   async addBudget(req, res, next) {
     const form = new formidable.IncomingForm();
 

@@ -65,6 +65,23 @@ class News {
     }
   }
 
+  async getAllNews(req, res, next) {
+    try {
+      const activities = await NewsModel.find({}, "-_id -__v");
+      res.send({
+        status: 1,
+        data: activities,
+      });
+    } catch (err) {
+      console.log("获取活动数据失败");
+      res.send({
+        status: 0,
+        type: "ERROR_DATA",
+        message: "获取活动数据失败",
+      });
+    }
+  }
+
   async addNews(req, res, next) {
     const form = new formidable.IncomingForm();
     form.uploadDir = `./public/img`;
