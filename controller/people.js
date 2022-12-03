@@ -267,20 +267,23 @@ class People {
     }
 
     try {
-      req.imgType = "people";
-      const image_path = await getPath(req);
+      const form = new formidable.IncomingForm();
+      form.uploadDir = `./public/img`;
 
-      await PeopleModel.findOneAndUpdate(
-        { _id: people_id },
-        { $set: { avatar: image_path } }
-      );
+      form.parse(req, async (err, fields, files) => {
+        const image_path = await getPath(files, res, "people");
+        await PeopleModel.findOneAndUpdate(
+          { _id: people_id },
+          { $set: { avatar: image_path } }
+        );
 
-      res.send({
-        status: 1,
-        data: image_path,
+        res.send({
+          status: 1,
+          data: image_path,
+        });
+
+        return;
       });
-
-      return;
     } catch (err) {
       console.log("上传图片失败", err);
       res.send({

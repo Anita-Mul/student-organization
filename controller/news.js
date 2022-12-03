@@ -3,6 +3,7 @@ import formidable from "formidable";
 
 import NewsModel from "../models/news";
 import ClubModel from "../models/club";
+import getPath from "../utils/getPath";
 class News {
   constructor(props) {}
 
@@ -66,10 +67,11 @@ class News {
 
   async addNews(req, res, next) {
     const form = new formidable.IncomingForm();
+    form.uploadDir = `./public/img`;
 
     form.parse(req, async (err, fields, files) => {
-      const { club, title, content, author, picture } = fields;
-
+      const { club, title, content, author } = fields;
+      console.log(11111);
       try {
         if (!club) {
           throw new Error("必填新闻所属社团");
@@ -90,14 +92,9 @@ class News {
         return;
       }
 
-      const image_path = "default.jpg";
+      const image_path = await getPath(files, res, "news");
 
-      if (picture) {
-        req.imgType = "news";
-        image_path = await getPath(req);
-      }
-
-      const foodObj = {
+      const newsObj = {
         club,
         title,
         content,
@@ -105,9 +102,9 @@ class News {
         picture: image_path,
       };
 
-      const newFood = new MenuModel(foodObj);
+      const news = new NewsModel(newsObj);
       try {
-        await newFood.save();
+        await news.save();
         res.send({
           status: 1,
           success: "添加新闻成功",
