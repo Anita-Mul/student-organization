@@ -2,6 +2,7 @@
 
 import express from "express";
 import News from "../controller/news.js";
+import check from "../middleWares/check.js";
 
 const router = express.Router();
 

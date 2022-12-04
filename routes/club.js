@@ -2,6 +2,7 @@
 
 import express from "express";
 import Club from "../controller/club";
+import check from "../middleWares/check.js";
 
 const router = express.Router();
 
