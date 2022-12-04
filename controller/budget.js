@@ -120,7 +120,12 @@ class Budget {
 
       const budget = new BudgetModel(budgetObj);
       try {
-        await budget.save();
+        const budget_id = await budget.save()._id;
+
+        let belongClub = await ClubModel.findOne({ _id: club }).lean();
+        belongClub.budget.push(budget_id);
+        await ClubModel.findOneAndUpdate({ _id: club }, { $set: belongClub });
+
         res.send({
           status: 1,
           success: "添加经费成功",
@@ -149,13 +154,13 @@ class Budget {
     }
     try {
       const budget = await BudgetModel.findOne({ _id: budget_id });
-      const club = await ClubModel.findOne({ _id: budget.club });
+      const club = await ClubModel.findOne({ _id: budget.lean().club }).lean();
 
-      club.news.splice(
+      club.budget.splice(
         club.budget.findIndex((id) => id === budget_id),
         1
       );
-      await club.save();
+      await ClubModel.findOneAndUpdate({ _id: club._id }, { $set: club });
       await budget.remove();
 
       res.send({

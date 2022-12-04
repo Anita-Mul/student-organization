@@ -129,7 +129,12 @@ class Activity {
 
       const activity = new ActivityModel(activityObj);
       try {
-        await activity.save();
+        const activity_id = await activity.save()._id;
+
+        let belongClub = await ClubModel.findOne({ _id: club }).lean();
+        belongClub.activities.push(activity_id);
+        await ClubModel.findOneAndUpdate({ _id: club }, { $set: belongClub });
+
         res.send({
           status: 1,
           success: "添加活动成功",
@@ -160,13 +165,16 @@ class Activity {
 
     try {
       const activity = await ActivityModel.findOne({ _id: activity_id });
-      const club = await ClubModel.findOne({ _id: activity.club });
+      const club = await ClubModel.findOne({
+        _id: activity.lean().club,
+      }).lean();
 
-      club.news.splice(
+      club.activities.splice(
         club.activities.findIndex((id) => id === activity_id),
         1
       );
-      await club.save();
+
+      await ClubModel.findOneAndUpdate({ _id: club._id }, { $set: club });
       await activity.remove();
 
       res.send({

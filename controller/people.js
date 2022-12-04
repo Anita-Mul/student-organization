@@ -14,12 +14,6 @@ const LEADER = "Leader";
 
 class People {
   constructor() {
-    this.login = this.login.bind(this);
-    this.register = this.register.bind(this);
-    this.logout = this.logout.bind(this);
-    this.getAllPeopleWithType = this.getAllPeopleWithType.bind(this);
-    this.getPeopleInfo = this.getPeopleInfo.bind(this);
-    this.updateAvatar = this.updateAvatar.bind(this);
     this.encryption = this.encryption.bind(this);
     this.Md5 = this.Md5.bind(this);
   }

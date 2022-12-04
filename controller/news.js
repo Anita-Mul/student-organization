@@ -121,7 +121,12 @@ class News {
 
       const news = new NewsModel(newsObj);
       try {
-        await news.save();
+        const news_id = await news.save()._id;
+
+        let belongClub = await ClubModel.findOne({ _id: club }).lean();
+        belongClub.news.push(news_id);
+        await ClubModel.findOneAndUpdate({ _id: club }, { $set: belongClub });
+
         res.send({
           status: 1,
           success: "添加新闻成功",
@@ -151,13 +156,13 @@ class News {
     }
     try {
       const news = await NewsModel.findOne({ _id: news_id });
-      const club = await ClubModel.findOne({ _id: news.club });
+      const club = await ClubModel.findOne({ _id: news.lean().club }).lean();
 
       club.news.splice(
         club.news.findIndex((id) => id === news_id),
         1
       );
-      await club.save();
+      await ClubModel.findOneAndUpdate({ _id: club._id }, { $set: club });
       await news.remove();
 
       res.send({
