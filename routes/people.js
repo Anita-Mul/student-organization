@@ -14,5 +14,6 @@ router.get("/info/:people_id", People.getPeopleInfo);
 router.post("/update/avatar/:people_id", People.updateAvatar);
 router.get("/addClubLeader/:people_id", People.addClubLeader);
 router.get("/addClubUser/:people_id", People.addClubUser);
+router.get("/addAdmin/:people_id", People.addAdmin);
 
 export default router;

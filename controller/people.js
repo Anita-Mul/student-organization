@@ -14,6 +14,8 @@ const LEADER = "Leader";
 
 class People {
   constructor() {
+    this.login = this.login.bind(this);
+    this.register = this.register.bind(this);
     this.encryption = this.encryption.bind(this);
     this.Md5 = this.Md5.bind(this);
   }
@@ -95,15 +97,13 @@ class People {
         return;
       }
 
-      const { user_name, password, type, institute = "", phone = "" } = fields;
+      const { user_name, password, institute = "", phone = "" } = fields;
 
       try {
         if (!user_name) {
           throw new Error("用户名错误");
         } else if (!password) {
           throw new Error("密码错误");
-        } else if (!type) {
-          throw new Error("类型错误");
         }
       } catch (err) {
         console.log(err.message, err);
@@ -130,7 +130,7 @@ class People {
           const newPeople = {
             user_name,
             password: newPassword,
-            type,
+            type: "User",
             create_time: dtime().format("YYYY-MM-DD"),
             institute,
             phone,
@@ -139,7 +139,6 @@ class People {
           const findPeople = await PeopleModel.create(newPeople);
 
           req.session.people_id = findPeople._id;
-          req.session.type = type;
 
           res.send({
             status: 1,
@@ -368,6 +367,45 @@ class People {
       res.send({
         status: 1,
         message: "添加 club user 成功",
+      });
+
+      return;
+    } catch (err) {
+      console.log("添加 club user 失败", err);
+      res.send({
+        status: 0,
+        type: "ERROR_ADD_CLUB_USER",
+        message: "添加 club user 失败",
+      });
+      return;
+    }
+  }
+
+  async addAdmin(req, res, next) {
+    const people_id = req.params.people_id;
+
+    try {
+      if (!people_id) {
+        throw new Error("people id 必填");
+      }
+    } catch (err) {
+      console.log(err.message, err);
+      res.send({
+        status: 0,
+        type: "GET_ERROR_PARAM",
+        message: err.message,
+      });
+      return;
+    }
+
+    try {
+      let people = await PeopleModel.findOne({ _id: people_id }).lean();
+      people.type = "Admin";
+      await PeopleModel.findOneAndUpdate({ _id: people_id }, { $set: people });
+
+      res.send({
+        status: 1,
+        message: "添加 club Admin 成功",
       });
 
       return;
