@@ -120,11 +120,22 @@ class Budget {
 
       const budget = new BudgetModel(budgetObj);
       try {
-        const budget_id = await budget.save()._id;
-
-        let belongClub = await ClubModel.findOne({ _id: club }).lean();
-        belongClub.budget.push(budget_id);
-        await ClubModel.findOneAndUpdate({ _id: club }, { $set: belongClub });
+        await budget.save(async function (err, result) {
+          if (err) {
+            res.send({
+              status: 0,
+              type: "ERROR_IN_SAVE_DATA",
+              message: "保存数据失败",
+            });
+          } else {
+            let belongClub = await ClubModel.findOne({ _id: club }).lean();
+            belongClub.budget.push(result._id);
+            await ClubModel.findOneAndUpdate(
+              { _id: club },
+              { $set: belongClub }
+            );
+          }
+        });
 
         res.send({
           status: 1,
@@ -154,7 +165,7 @@ class Budget {
     }
     try {
       const budget = await BudgetModel.findOne({ _id: budget_id });
-      const club = await ClubModel.findOne({ _id: budget.lean().club }).lean();
+      const club = await ClubModel.findOne({ _id: budget._doc.club }).lean();
 
       club.budget.splice(
         club.budget.findIndex((id) => id === budget_id),

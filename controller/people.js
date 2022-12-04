@@ -312,7 +312,7 @@ class People {
 
     try {
       let people = await PeopleModel.findOne({ _id: people_id }).lean();
-      people.club.push(club);
+      people.manageClub.push(club);
       await PeopleModel.findOneAndUpdate({ _id: people_id }, { $set: people });
 
       let belongClub = await ClubModel.findOne({ _id: club }).lean();

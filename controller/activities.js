@@ -129,11 +129,22 @@ class Activity {
 
       const activity = new ActivityModel(activityObj);
       try {
-        const activity_id = await activity.save()._id;
-
-        let belongClub = await ClubModel.findOne({ _id: club }).lean();
-        belongClub.activities.push(activity_id);
-        await ClubModel.findOneAndUpdate({ _id: club }, { $set: belongClub });
+        await activity.save(async function (err, result) {
+          if (err) {
+            res.send({
+              status: 0,
+              type: "ERROR_IN_SAVE_DATA",
+              message: "保存数据失败",
+            });
+          } else {
+            let belongClub = await ClubModel.findOne({ _id: club }).lean();
+            belongClub.news.push(result._id);
+            await ClubModel.findOneAndUpdate(
+              { _id: club },
+              { $set: belongClub }
+            );
+          }
+        });
 
         res.send({
           status: 1,
@@ -166,7 +177,7 @@ class Activity {
     try {
       const activity = await ActivityModel.findOne({ _id: activity_id });
       const club = await ClubModel.findOne({
-        _id: activity.lean().club,
+        _id: activity._doc.club,
       }).lean();
 
       club.activities.splice(

@@ -11,6 +11,7 @@ const peopleSchema = new Schema({
   sex: { type: String, default: "man" },
   institute: String,
   phone: String,
+  manageClub: { type: [String], default: [] },
   club: { type: [String], default: [] },
   avatar: { type: String, default: "img/default.jpg" },
   type: "String",
