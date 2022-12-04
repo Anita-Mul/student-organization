@@ -138,7 +138,7 @@ class Activity {
             });
           } else {
             let belongClub = await ClubModel.findOne({ _id: club }).lean();
-            belongClub.news.push(result._id);
+            belongClub.activities.push(result._id);
             await ClubModel.findOneAndUpdate(
               { _id: club },
               { $set: belongClub }
