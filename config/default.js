@@ -2,7 +2,7 @@
 
 module.exports = {
   port: parseInt(process.env.PORT, 10) || 3000,
-  // url: 'mongodb://Anita_Sun:<password>@elmdata-shard-00-00.xtxqu.mongodb.net:27017,elmdata-shard-00-01.xtxqu.mongodb.net:27017,elmdata-shard-00-02.xtxqu.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-10hanu-shard-0&authSource=admin&retryWrites=true&w=majority',
+  // url: "mongodb://Anita-Sun:19631010@ac-aomk4od-shard-00-00.mxgtqc7.mongodb.net:27017,ac-aomk4od-shard-00-01.mxgtqc7.mongodb.net:27017,ac-aomk4od-shard-00-02.mxgtqc7.mongodb.net:27017/?ssl=true&replicaSet=atlas-pwsa8a-shard-0&authSource=admin&retryWrites=true&w=majority",
   url: "mongodb://127.0.0.1:27017/student-organization",
   session: {
     name: "SID",
