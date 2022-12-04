@@ -9,8 +9,9 @@ router.post("/login", People.login);
 router.post("/register", People.register);
 router.get("/logout", People.logout);
 router.get("/all", People.getAllPeopleWithType);
-router.get("/info", People.getPeopleInfo);
+router.get("/info/:people_id", People.getPeopleInfo);
 router.post("/update/avatar/:people_id", People.updateAvatar);
-router.get("/addClubLeader", People.addClubLeader);
+router.get("/addClubLeader/:people_id", People.addClubLeader);
+router.get("/addClubUser/:people_id", People.addClubUser);
 
 export default router;
