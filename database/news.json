@@ -1,0 +1,53 @@
+[{
+  "_id": {
+    "$oid": "638c9a72bcc086393cd68e8c"
+  },
+  "club": "638c931b883f8c5fece64010",
+  "title": "惊！萨顶顶竟挖了王羲之的墓",
+  "content": "萨顶顶发财了",
+  "author": "萨顶顶",
+  "picture": "img/news/184dd3b692f.jpg",
+  "date": {
+    "$date": "2022-12-04T13:02:42.843Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c9ac1bcc086393cd68e8d"
+  },
+  "club": "638c931b883f8c5fece64010",
+  "title": "书法使人快乐",
+  "content": "写写写写写写",
+  "author": "萨顶顶",
+  "picture": "img/news/184dd3c8800.jpg",
+  "date": {
+    "$date": "2022-12-04T13:04:01.387Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c9b0ebcc086393cd68e8e"
+  },
+  "club": "638c9352883f8c5fece64011",
+  "title": "画画使人快乐",
+  "content": "画画画画画画画画画",
+  "author": "萨顶顶",
+  "picture": "img/news/184dd3dc7b9.jpg",
+  "date": {
+    "$date": "2022-12-04T13:05:18.428Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c9b57bcc086393cd68e8f"
+  },
+  "club": "638c9352883f8c5fece64011",
+  "title": "芳芳画了一百张王冰冰",
+  "content": "芳芳发财了",
+  "author": "萨顶顶",
+  "picture": "img/news/184dd3eed7f.jpg",
+  "date": {
+    "$date": "2022-12-04T13:06:31.398Z"
+  },
+  "__v": 0
+}]

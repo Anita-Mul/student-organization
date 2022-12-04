@@ -1,0 +1,53 @@
+[{
+  "_id": {
+    "$oid": "638ca58e75d88c33c42df0c4"
+  },
+  "club": "638c931b883f8c5fece64010",
+  "input": true,
+  "description": "买了一百只毛笔",
+  "money": 1000,
+  "state": false,
+  "date": {
+    "$date": "2022-12-04T13:50:06.205Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638ca5bc75d88c33c42df0c5"
+  },
+  "club": "638c931b883f8c5fece64010",
+  "input": true,
+  "description": "买了一百张纸",
+  "money": 1000,
+  "state": false,
+  "date": {
+    "$date": "2022-12-04T13:50:52.074Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638ca5d175d88c33c42df0c6"
+  },
+  "club": "638c931b883f8c5fece64010",
+  "input": true,
+  "description": "买了一百罐墨水",
+  "money": 1000,
+  "state": false,
+  "date": {
+    "$date": "2022-12-04T13:51:13.137Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638ca5e075d88c33c42df0c7"
+  },
+  "club": "638c931b883f8c5fece64010",
+  "input": true,
+  "description": "买了一百个王羲之",
+  "money": 1000,
+  "state": false,
+  "date": {
+    "$date": "2022-12-04T13:51:28.078Z"
+  },
+  "__v": 0
+}]

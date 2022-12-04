@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "638caafd2e55e96b382c616a"
+  },
+  "user_name": "王菲",
+  "password": "IEdv0tn+Q5r4w95+2J9EDg==",
+  "type": "Admin",
+  "create_time": "2022-12-04",
+  "institute": "生物学院",
+  "phone": "199349889213",
+  "avatar": "img/default.jpg",
+  "club": [],
+  "manageClub": [],
+  "sex": "man",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638cab832e55e96b382c616b"
+  },
+  "user_name": "孙燕姿",
+  "password": "IEdv0tn+Q5r4w95+2J9EDg==",
+  "type": "User",
+  "create_time": "2022-12-04",
+  "institute": "音乐学院",
+  "phone": "199349889213",
+  "avatar": "img/default.jpg",
+  "club": [
+    "638c931b883f8c5fece64010"
+  ],
+  "manageClub": [],
+  "sex": "man",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638cab9c2e55e96b382c616c"
+  },
+  "user_name": "梅艳芳",
+  "password": "IEdv0tn+Q5r4w95+2J9EDg==",
+  "type": "Leader",
+  "create_time": "2022-12-04",
+  "institute": "神学院",
+  "phone": "199349889213",
+  "avatar": "img/default.jpg",
+  "club": [],
+  "manageClub": [
+    "638c931b883f8c5fece64010"
+  ],
+  "sex": "man",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638cae811cf09f55a4253049"
+  },
+  "user_name": "周涛",
+  "password": "IEdv0tn+Q5r4w95+2J9EDg==",
+  "type": "Admin",
+  "create_time": "2022-12-04",
+  "institute": "中央电视台学院",
+  "phone": "199349889213",
+  "avatar": "img/default.jpg",
+  "club": [],
+  "manageClub": [],
+  "sex": "man",
+  "__v": 0
+}]

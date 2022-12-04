@@ -1,0 +1,277 @@
+[{
+  "_id": {
+    "$oid": "638c931b883f8c5fece64010"
+  },
+  "name": "书法社",
+  "description": "我爱书法，呼呼哈嘿",
+  "type": "兴趣爱好",
+  "budget": [
+    "638ca58e75d88c33c42df0c4",
+    "638ca5bc75d88c33c42df0c5",
+    "638ca5d175d88c33c42df0c6",
+    "638ca5e075d88c33c42df0c7"
+  ],
+  "activities": [
+    "638ca7ace56ae1596ccdb851",
+    "638ca800e56ae1596ccdb852",
+    "638ca808e56ae1596ccdb853",
+    "638ca80fe56ae1596ccdb854",
+    "638ca817e56ae1596ccdb855"
+  ],
+  "news": [
+    "638c9a72bcc086393cd68e8c",
+    "638c9ac1bcc086393cd68e8d"
+  ],
+  "picture": "img/club/184dd1ebd51.jpg",
+  "member": [
+    "638cab832e55e96b382c616b"
+  ],
+  "leader": [
+    "638cab9c2e55e96b382c616c"
+  ],
+  "create_time": {
+    "$date": "2022-12-04T12:31:23.129Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c9352883f8c5fece64011"
+  },
+  "name": "画画社",
+  "description": "我爱画画，呼呼哈嘿",
+  "type": "兴趣爱好",
+  "budget": [],
+  "activities": [],
+  "news": [
+    "638c9b0ebcc086393cd68e8e",
+    "638c9b57bcc086393cd68e8f"
+  ],
+  "picture": "img/club/184dd1f7ea0.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:32:18.266Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c9391883f8c5fece64012"
+  },
+  "name": "编程社",
+  "description": "我爱编程，呼呼哈嘿",
+  "type": "兴趣爱好",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd20769f.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:33:21.237Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c93be883f8c5fece64013"
+  },
+  "name": "滑板社",
+  "description": "我爱滑板，呼呼哈嘿",
+  "type": "兴趣爱好",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd2120e6.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:34:06.221Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c93e6883f8c5fece64014"
+  },
+  "name": "自习社",
+  "description": "我爱滑板，呼呼哈嘿",
+  "type": "学习",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd21cf8e.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:34:46.323Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c93fb883f8c5fece64015"
+  },
+  "name": "数学社",
+  "description": "我爱数学，呼呼哈嘿",
+  "type": "学习",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd221017.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:35:07.395Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c940e883f8c5fece64016"
+  },
+  "name": "英语社",
+  "description": "我爱英语，呼呼哈嘿",
+  "type": "学习",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd2275fd.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:35:26.363Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c942b883f8c5fece64017"
+  },
+  "name": "语文社",
+  "description": "我爱语文，呼呼哈嘿",
+  "type": "学习",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd22e840.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:35:55.420Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c9458883f8c5fece64018"
+  },
+  "name": "地理社",
+  "description": "我爱地理，呼呼哈嘿",
+  "type": "学习",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd238bcb.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:36:40.817Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c94f2883f8c5fece64019"
+  },
+  "name": "篮球社",
+  "description": "我爱篮球，呼呼哈嘿",
+  "type": "体育运动",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd25f24d.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:39:14.185Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c9500883f8c5fece6401a"
+  },
+  "name": "足球社",
+  "description": "我爱足球，呼呼哈嘿",
+  "type": "体育运动",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd260ea7.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:39:28.375Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c9516883f8c5fece6401b"
+  },
+  "name": "排球社",
+  "description": "我爱排球，呼呼哈嘿",
+  "type": "体育运动",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd268788.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:39:50.834Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c9573883f8c5fece6401c"
+  },
+  "name": "一株小草社",
+  "description": "我爱王冰冰，呼呼哈嘿",
+  "type": "公益",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd27cfc4.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:41:23.277Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c9592883f8c5fece6401d"
+  },
+  "name": "一朵小花社",
+  "description": "我爱小花花，呼呼哈嘿",
+  "type": "公益",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd2861a2.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:41:54.280Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c95a7883f8c5fece6401e"
+  },
+  "name": "一棵大树社",
+  "description": "我爱大树，呼呼哈嘿",
+  "type": "公益",
+  "budget": [],
+  "activities": [],
+  "news": [],
+  "picture": "img/club/184dd289a78.jpg",
+  "member": [],
+  "leader": [],
+  "create_time": {
+    "$date": "2022-12-04T12:42:15.895Z"
+  },
+  "__v": 0
+}]
