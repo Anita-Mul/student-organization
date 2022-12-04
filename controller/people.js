@@ -5,7 +5,9 @@ import formidable from "formidable";
 import dtime from "time-formater";
 
 import PeopleModel from "../models/people";
+import ClubModel from "../models/club";
 import getPath from "../utils/getPath";
+import Club from "../models/club";
 
 const ADMIN = "Admin";
 const USER = "User";
@@ -221,12 +223,12 @@ class People {
   async getPeopleInfo(req, res, next) {
     const people_id = req.session.people_id;
 
-    if (!people_id || !Number(people_id)) {
-      // console.log('获取管理员信息的session失效');
+    if (!people_id) {
+      console.log("获取用户信息的session失效");
       res.send({
         status: 0,
         type: "ERROR_SESSION",
-        message: "获取管理员信息失败",
+        message: "获取用户信息失败",
       });
       return;
     }
@@ -291,6 +293,56 @@ class People {
         status: 0,
         type: "ERROR_UPLOAD_IMG",
         message: "上传图片失败",
+      });
+      return;
+    }
+  }
+
+  async addClubLeader(req, res, next) {
+    const people_id = req.session.people_id;
+    const club = req.query.club;
+
+    if (!people_id) {
+      console.log("获取用户信息的session失效");
+      res.send({
+        status: 0,
+        type: "ERROR_SESSION",
+        message: "获取用户信息失败",
+      });
+      return;
+    }
+
+    if (!club) {
+      console.log("club 必填");
+      res.send({
+        status: 0,
+        type: "ERROR_PARAMS",
+        message: "用户参加的 club 必填",
+      });
+      return;
+    }
+
+    try {
+      let people = await PeopleModel.findOne({ _id: people_id }).lean();
+      people.club.push(club);
+      await PeopleModel.findOneAndUpdate({ _id: people_id }, { $set: people });
+
+      let belongClub = await ClubModel.findOne({ _id: club }).lean();
+      belongClub.leader.push(people_id);
+      await ClubModel.findOneAndUpdate({ _id: club }, { $set: belongClub });
+
+      res.send({
+        status: 1,
+        message: "添加 club leader 成功",
+      });
+
+      return;
+    } catch (err) {
+      console.log("添加 club leader 失败", err);
+      res.send({
+        status: 0,
+        type: "ERROR_ADD_CLUB_LEADER",
+        message: "添加 club leader 失败",
       });
       return;
     }
