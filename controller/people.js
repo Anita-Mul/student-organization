@@ -626,7 +626,6 @@ class People {
       let applyAdmin = await ApplyAdminModel.findOne({}).lean();
       applyAdmin.applyAdminPeople.forEach((item, index) => {
         if (item === people_id) {
-          console.log(item);
           applyAdmin.applyAdminPeople.splice(index, 1);
         }
       });
