@@ -14,11 +14,15 @@ router.post("/update/avatar/:people_id", People.updateAvatar);
 router.get("/applyClubLeader", People.applyClubLeader);
 router.get("/applyClubUser", People.applyClubUser);
 router.get("/applyAdmin", People.applyAdmin);
-router.get("/getClubApplyLeader", People.getClubApplyLeader);
-router.get("/getClubApplyUser", People.getClubApplyUser);
-router.get("/getApplyAdmin", People.getApplyAdmin);
-router.get("/addClubLeader", People.addClubLeader);
-router.get("/addClubUser", People.addClubUser);
-router.get("/addAdmin", People.addAdmin);
+router.get(
+  "/getClubApplyLeader",
+  Check.checkClubLeader,
+  People.getClubApplyLeader
+);
+router.get("/getClubApplyUser", Check.checkClubLeader, People.getClubApplyUser);
+router.get("/getApplyAdmin", Check.checkAdmin, People.getApplyAdmin);
+router.get("/addClubLeader", Check.checkClubLeader, People.addClubLeader);
+router.get("/addClubUser", Check.checkClubLeader, People.addClubUser);
+router.get("/addAdmin", Check.checkAdmin, People.addAdmin);
 
 export default router;

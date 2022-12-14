@@ -2,14 +2,14 @@
 
 import express from "express";
 import Club from "../controller/club";
-import check from "../middleWares/check.js";
+import Check from "../middleWares/check.js";
 
 const router = express.Router();
 
 router.get("/club/:club_id", Club.getClub);
 router.get("/allClub", Club.getAllClub);
-router.post("/addClub", Club.addClub);
-router.get("/deleteClub/:club_id", Club.deleteClub);
-router.post("/updateClub", Club.updateClub);
+router.post("/addClub", Check.checkAdmin, Club.addClub);
+router.get("/deleteClub/:club_id", Check.checkAdmin, Club.deleteClub);
+router.post("/updateClub", Check.checkClubLeader, Club.updateClub);
 
 export default router;
