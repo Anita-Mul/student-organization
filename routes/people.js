@@ -2,7 +2,7 @@
 
 import express from "express";
 import People from "../controller/people.js";
-import check from "../middleWares/check.js";
+import Check from "../middleWares/check.js";
 
 const router = express.Router();
 
@@ -20,5 +20,7 @@ router.get("/getApplyAdmin", People.getApplyAdmin);
 router.get("/addClubLeader", People.addClubLeader);
 router.get("/addClubUser", People.addClubUser);
 router.get("/addAdmin", People.addAdmin);
+
+router.get("/checkClubLeader", Check.checkClubLeader);
 
 export default router;
