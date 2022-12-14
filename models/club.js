@@ -9,6 +9,8 @@ const clubSchema = new Schema({
   create_time: { type: Date, default: Date.now },
   leader: { type: [String], default: [] },
   member: { type: [String], default: [] },
+  applyLeader: { type: [String], default: [] },
+  applyMember: { type: [String], default: [] },
   name: String,
   description: String,
   type: String,
