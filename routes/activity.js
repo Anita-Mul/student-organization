@@ -2,7 +2,7 @@
 
 import express from "express";
 import Activity from "../controller/activities";
-import check from "../middleWares/check.js";
+import Check from "../middleWares/check.js";
 
 const router = express.Router();
 
@@ -13,5 +13,7 @@ router.post("/addActivity", Activity.addActivity);
 router.get("/deleteActivity/:activity_id", Activity.deleteActivity);
 router.post("/updateActivity", Activity.updateActivity);
 router.get("/updateActivityState/:activity_id", Activity.updateActivityState);
+
+router.get("/checkClubLeader", Check.checkClubLeader);
 
 export default router;

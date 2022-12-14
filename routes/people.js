@@ -21,6 +21,4 @@ router.get("/addClubLeader", People.addClubLeader);
 router.get("/addClubUser", People.addClubUser);
 router.get("/addAdmin", People.addAdmin);
 
-router.get("/checkClubLeader", Check.checkClubLeader);
-
 export default router;
