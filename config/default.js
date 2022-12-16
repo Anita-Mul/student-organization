@@ -8,7 +8,7 @@ module.exports = {
     name: "SID",
     secret: "SID",
     cookie: {
-      httpOnly: true,
+      httpOnly: false,
       secure: false,
       maxAge: 365 * 24 * 60 * 60 * 1000,
     },

@@ -68,6 +68,7 @@ class People {
         } else {
           console.log(people._id);
           req.session.people_id = people._id;
+          console.log(req.session);
 
           res.send({
             status: 1,

@@ -2,7 +2,7 @@
 
 import express from "express";
 import Budget from "../controller/budget";
-import Check from "../middleWares/check.js";
+import Check from "../middlewares/check.js";
 
 const router = express.Router();
 

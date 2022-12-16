@@ -48,8 +48,8 @@ class Check {
   }
 
   async checkAdmin(req, res, next) {
-    // const people_id = req.session.people_id;
-    const people_id = "638cab9c2e55e96b382c616c";
+    const people_id = req.session.people_id;
+    // const people_id = "638cab9c2e55e96b382c616c";
 
     if (!people_id) {
       res.send({
